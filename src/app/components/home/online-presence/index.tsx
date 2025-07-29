@@ -11,61 +11,11 @@ function CaseStudiesShowcase() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Por ahora adaptamos los datos existentes, luego los cambiaremos
         const res = await fetch('/api/page-data')
         if (!res.ok) throw new Error('Failed to fetch')
 
         const data = await res.json()
-        
-        // Adaptamos los datos existentes para casos de estudio UX/UI
-        const adaptedCases = [
-          {
-            image: '/images/home/onlinePresence/online_img_1.jpg',
-            title: 'Rediseño de App Bancaria',
-            description: 'Mejora de la experiencia de usuario en aplicación móvil bancaria, aumentando la satisfacción del usuario en un 40%.',
-            category: 'App Móvil',
-            methodology: ['Investigación de Usuarios', 'Prototipado', 'Testing A/B'],
-            duration: '3 meses',
-            challenge: 'Baja adopción y quejas de usabilidad',
-            tools: ['Figma', 'Maze', 'UserTesting'],
-            link: '/casos-estudio/app-bancaria'
-          },
-          {
-            image: '/images/home/onlinePresence/online_img_2.jpg', 
-            title: 'Plataforma E-learning',
-            description: 'Diseño completo de interfaz para plataforma educativa, priorizando la accesibilidad y navegación intuitiva.',
-            category: 'Web App',
-            methodology: ['Arquitectura de Información', 'Diseño de Interfaz', 'Prototipado'],
-            duration: '4 meses',
-            challenge: 'Crear experiencia intuitiva para diferentes edades',
-            tools: ['Sketch', 'InVision', 'Hotjar'],
-            link: '/casos-estudio/e-learning'
-          },
-          {
-            image: '/images/home/onlinePresence/online_img_3.jpg',
-            title: 'Dashboard Analítico',
-            description: 'Interfaz para visualización de datos complejos, simplificando la toma de decisiones empresariales.',
-            category: 'Dashboard',
-            methodology: ['Investigación de Usuarios', 'Visualización de Datos', 'Iteración'],
-            duration: '2 meses', 
-            challenge: 'Presentar datos complejos de forma simple',
-            tools: ['Figma', 'Principle', 'Tableau'],
-            link: '/casos-estudio/dashboard'
-          },
-          {
-            image: '/images/home/onlinePresence/online_img_4.jpg',
-            title: 'App de Delivery',
-            description: 'Optimización del flujo de pedidos y mejora de la experiencia de entrega para usuarios y repartidores.',
-            category: 'App Móvil',
-            methodology: ['Mapeo de Experiencia', 'Prototipado Rápido', 'Testing de Usabilidad'],
-            duration: '6 semanas',
-            challenge: 'Coordinar múltiples tipos de usuarios',
-            tools: ['Adobe XD', 'Marvel', 'Lookback'],
-            link: '/casos-estudio/delivery'
-          }
-        ];
-        
-        setCaseStudiesList(adaptedCases)
+        setCaseStudiesList(data?.onlinePresenceList || [])
       } catch (error) {
         console.error('Error fetching case studies:', error)
       }
@@ -126,7 +76,7 @@ function CaseStudiesShowcase() {
                         {caso.title}
                       </h5>
                       <div className='flex gap-3'>
-                        {caso.methodology?.slice(0, 2).map((method:any, index:number) => (
+                        {caso.tag?.slice(0, 2).map((method:any, index:number) => (
                           <p
                             key={index}
                             className='text-sm border border-dark_black/10 dark:border-white/50 w-fit py-1.5 px-4 rounded-full hover:bg-dark_black hover:text-white'>

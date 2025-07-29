@@ -14,71 +14,11 @@ function UXUIReferents() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Datos de referentes UX/UI
-        const uxuiReferents = [
-          {
-            image: '/images/home/creative/creative_img_1.png', // Placeholder
-            name: 'Don Norman',
-            role: 'Pionero del Diseño Centrado en el Usuario',
-            company: 'Nielsen Norman Group',
-            bio: 'Autor de "The Design of Everyday Things". Acuñó el término "User Experience" y estableció los principios fundamentales del diseño centrado en el usuario.',
-            linkedinUrl: 'https://www.linkedin.com/in/don-norman-1a001/',
-            portfolioUrl: 'https://jnd.org/',
-            contributions: [
-              'Acuñó el término "User Experience"',
-              'Principios de diseño centrado en el usuario',
-              'Teoría de las affordances en diseño'
-            ],
-            keyWork: 'The Design of Everyday Things'
-          },
-          {
-            image: '/images/home/creative/creative_img_2.png', // Placeholder
-            name: 'Jakob Nielsen',
-            role: 'Experto en Usabilidad Web',
-            company: 'Nielsen Norman Group',
-            bio: 'Conocido como el "gurú de la usabilidad web". Desarrolló las 10 heurísticas de usabilidad y promovió la importancia del testing de usuarios.',
-            linkedinUrl: 'https://www.linkedin.com/in/jakobnielsen/',
-            portfolioUrl: 'https://www.nngroup.com/people/jakob-nielsen/',
-            contributions: [
-              '10 Heurísticas de Usabilidad',
-              'Metodología de Testing de Usuarios',
-              'Pionero en usabilidad web'
-            ],
-            keyWork: 'Designing Web Usability'
-          },
-          {
-            image: '/images/home/creative/creative_img_3.png', // Placeholder
-            name: 'Alan Cooper',
-            role: 'Padre del Diseño de Interacción',
-            company: 'Cooper',
-            bio: 'Creador del concepto de "personas" en UX y fundador del diseño de interacción como disciplina. Pionero en el diseño de software centrado en objetivos.',
-            linkedinUrl: 'https://www.linkedin.com/in/alan-cooper-647b7/',
-            portfolioUrl: 'https://www.cooper.com/',
-            contributions: [
-              'Metodología de Personas',
-              'Diseño orientado a objetivos',
-              'Principios de diseño de interacción'
-            ],
-            keyWork: 'About Face: The Essentials of Interaction Design'
-          },
-          {
-            image: '/images/home/creative/creative_img_4.png', // Placeholder
-            name: 'Susan Kare',
-            role: 'Pionera del Diseño de Iconos',
-            company: 'Apple / Freelance',
-            bio: 'Diseñadora de los iconos originales de Macintosh. Revolucionó la interfaz gráfica de usuario y estableció estándares visuales que perduran hasta hoy.',
-            linkedinUrl: 'https://www.linkedin.com/in/susan-kare-a950/',
-            portfolioUrl: 'https://kare.com/',
-            contributions: [
-              'Iconos originales de Macintosh',
-              'Pionera en tipografía digital',
-              'Estándares de interfaz gráfica'
-            ],
-            keyWork: 'Iconos de Apple Macintosh (1984)'
-          }
-        ];
-        
-        setReferentsList(uxuiReferents)
+        const res = await fetch('/api/page-data')
+        if (!res.ok) throw new Error('Failed to fetch')
+
+        const data = await res.json()
+        setReferentsList(data?.creativeMindList || [])
       } catch (error) {
         console.error('Error fetching referents:', error)
       }
@@ -131,13 +71,18 @@ function UXUIReferents() {
                         <div className='flex flex-col gap-1 items-center'>
                           <p className='font-medium'>{referent.name}</p>
                           <p className='text-dark_black/60 dark:text-white/60 text-center'>
-                            {referent.role}
+                            {referent.position}
                           </p>
+                          {referent.company && (
+                            <p className='text-sm text-dark_black/50 dark:text-white/50 text-center'>
+                              {referent.company}
+                            </p>
+                          )}
                         </div>
                         <div className='flex gap-4'>
-                          {referent.linkedinUrl && (
+                          {referent.linkedinLink && (
                             <Link
-                              href={referent.linkedinUrl}
+                              href={referent.linkedinLink}
                               target='_blank'
                               className='group text-[#b1b1b1] hover:text-indigo-800'>
                               <svg

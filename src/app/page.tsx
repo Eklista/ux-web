@@ -1,3 +1,4 @@
+// src/app/page.tsx
 import { Metadata } from "next";
 import Achievements from "./components/home/achievements";
 import Brand from "./components/home/brand";
@@ -10,48 +11,39 @@ import Solutions from "./components/home/solution";
 import EducationalPillars from "./components/home/web-result";
 
 export const metadata: Metadata = {
-    title: "Home | Awake Agency",
+    title: "UX/UI Hub - Portal Informativo de Diseño de Experiencia e Interfaz",
+    description: "Descubre el mundo del UX/UI Design. Casos de estudio, pioneros, herramientas y recursos para entender el diseño centrado en el usuario.",
 };
-
 
 export default function Home() {
   return (
     <main>
-      {/* ---------------------Hero section Starts-----------------  */}
+      {/* Hero section */}
       <HeroSection />
-      {/* ---------------------Hero section Ends-----------------  */}
 
-      {/* ---------------------Brand logo section Starts-----------------  */}
+      {/* Brand/Tools section */}
       <Brand />
-      {/* ---------------------Brand logo section Ends-----------------  */}
 
-      {/* ---------------------Web result section Starts-----------------  */}
+      {/* About UX/UI section */}
       <EducationalPillars />
-      {/* ---------------------Web result section Ends-----------------  */}
 
-      {/* ---------------------Innovation section Starts-----------------  */}
+      {/* UX/UI Areas section */}
       <Innovation />
-      {/* ---------------------Innovation section Ends-----------------  */}
 
-      {/* ---------------------Online presence section Starts-----------------  */}
+      {/* Case Studies section */}
       <OnlinePresence />
-      {/* ---------------------Online presence section Ends-----------------  */}
 
-      {/* ---------------------Creative mind section Starts-----------------  */}
+      {/* UX/UI Pioneers section */}
       <CreativeMind />
-      {/* ---------------------Creative mind section Ends-----------------  */}
 
-      {/* ---------------------Faq section Starts-----------------  */}
+      {/* FAQ section */}
       <Faq />
-      {/* ---------------------Faq section Ends-----------------  */}
 
-      {/* ---------------------Achievements section Starts-----------------  */}
+      {/* Historical Milestones section */}
       <Achievements />
-      {/* ---------------------Achievements section Ends-----------------  */}
 
-      {/* ---------------------Solutions section Starts-----------------  */}
+      {/* CTA section */}
       <Solutions />
-      {/* ---------------------Solutions section Ends-----------------  */}
     </main>
   )
 }

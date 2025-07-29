@@ -12,59 +12,11 @@ function UXUIMilestones() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Hitos revolucionarios del UX/UI
-        const uxuiMilestones = [
-          {
-            icon: '/images/home/achievement/framer_award.svg',
-            dark_icon: '/images/home/achievement/dark_framer_award.svg',
-            sub_title: 'Revolución del Mouse',
-            title: 'Douglas Engelbart presenta el primer mouse y la interfaz gráfica, cambiando para siempre la interacción humano-computadora.',
-            year: '1968',
-            url: 'https://www.dougengelbart.org/',
-          },
-          {
-            icon: '/images/home/achievement/dribble_award.svg',
-            dark_icon: '/images/home/achievement/dribble_award.svg',
-            sub_title: 'Nacimiento del GUI',
-            title: 'Xerox Alto introduce la primera interfaz gráfica comercial con ventanas, iconos y menús.',
-            year: '1973',
-            url: 'https://computerhistory.org/',
-          },
-          {
-            icon: '/images/home/achievement/awward_award.svg',
-            dark_icon: '/images/home/achievement/dark_awward_award.svg',
-            sub_title: 'Era del Diseño Centrado en el Usuario',
-            title: 'Don Norman publica "The Design of Everyday Things", estableciendo los principios fundamentales del UX.',
-            year: '1988',
-            url: 'https://jnd.org/',
-          },
-          {
-            icon: '/images/home/achievement/framer_award.svg',
-            dark_icon: '/images/home/achievement/dark_framer_award.svg',
-            sub_title: 'Web para Todos',
-            title: 'Tim Berners-Lee crea la World Wide Web, democratizando el acceso a la información global.',
-            year: '1990',
-            url: 'https://www.w3.org/',
-          },
-          {
-            icon: '/images/home/achievement/dribble_award.svg',
-            dark_icon: '/images/home/achievement/dribble_award.svg',
-            sub_title: 'Revolución Táctil',
-            title: 'Apple iPhone redefine la interacción móvil con gestos táctiles intuitivos y diseño minimalista.',
-            year: '2007',
-            url: 'https://www.apple.com/',
-          },
-          {
-            icon: '/images/home/achievement/awward_award.svg',
-            dark_icon: '/images/home/achievement/dark_awward_award.svg',
-            sub_title: 'Diseño Responsivo',
-            title: 'Ethan Marcotte introduce el concepto de Responsive Web Design, adaptando interfaces a cualquier pantalla.',
-            year: '2010',
-            url: 'https://alistapart.com/article/responsive-web-design/',
-          }
-        ];
-        
-        setMilestonesList(uxuiMilestones)
+        const res = await fetch('/api/page-data')
+        if (!res.ok) throw new Error('Failed to fetch')
+
+        const data = await res.json()
+        setMilestonesList(data?.achievementsList || [])
       } catch (error) {
         console.error('Error fetching milestones:', error)
       }

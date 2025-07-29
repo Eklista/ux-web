@@ -1,9 +1,10 @@
+// src/app/api/footer-data/route.ts
 import { NextResponse } from "next/server";
 
 const footerData = {
     brand: {
-        name: "Awake",
-        tagline: "Empowering businesses with innovative solutions. Let's create something amazing together.",
+        name: "UX/UI Hub",
+        tagline: "Tu portal de información sobre diseño de experiencia e interfaz de usuario. Descubre casos, herramientas y pioneros que están transformando el mundo digital.",
         socialLinks: [
             {
                 icon: "/images/home/footerSocialIcon/twitter.svg",
@@ -27,32 +28,45 @@ const footerData = {
             }
         ]
     },
-    sitemap: {
-        name: "Sitemap",
+    explore: {
+        name: "Explorar",
         links: [
-            { name: "Contact us", url: "/contact" },
-            { name: "About us", url: "/#aboutus" },
-            { name: "Work", url: "/#work" },
-            { name: "Services", url: "/#services" },
-            { name: "Pricing", url: "/#pricing" }
+            { name: "Casos de Estudio", url: "/#casos-estudio" },
+            { name: "Herramientas UX/UI", url: "/#herramientas" },
+            { name: "Pioneros del Diseño", url: "/#referentes" },
+            { name: "Hitos Históricos", url: "/#hitos" },
+            { name: "Recursos", url: "/recursos" }
         ]
     },
-    otherPages: {
-        name: "Other Pages",
+    learn: {
+        name: "Aprender",
         links: [
-            { name: "Error 404", url: "/not-found" },
-            { name: "Terms & Conditions", url: "/terms-and-conditions" },
-            { name: "Privacy Policy", url: "/privacy-policy" },
-            { name: "Documentation", url: "/documentation" }
+            { name: "¿Qué es UX/UI?", url: "/#aboutus" },
+            { name: "Metodologías", url: "/metodologias" },
+            { name: "Preguntas Frecuentes", url: "/#faq" },
+            { name: "Glosario de Términos", url: "/glosario" },
+            { name: "Blog", url: "/blog" }
         ]
     },
-    contactDetails: {
-        name:"Contact Details",
-        address: "81 Rivington Street London EC2A 3AY",
-        email: "hello@awake.agency",
-        phone: "0105 192 3556"
+    legal: {
+        name: "Legal",
+        links: [
+            { name: "Términos y Condiciones", url: "/terms-and-conditions" },
+            { name: "Política de Privacidad", url: "/privacy-policy" },
+            { name: "Documentación", url: "/documentation" },
+            { name: "Contacto", url: "/contact" }
+        ]
     },
-    copyright: "©2025 Awake. All Rights Reserved"
+    about: {
+        name: "Acerca del Proyecto",
+        description: "Sitio web informativo creado como proyecto académico para la Universidad Galileo.",
+        details: [
+            "Facultad de Ciencias de la Comunicación",
+            "Licenciatura en Comunicación y Diseño",
+            "Asignatura: Diseño de Páginas Web"
+        ]
+    },
+    copyright: "©2025 UX/UI Hub - Proyecto Académico Universidad Galileo. Todos los derechos reservados."
 };
 
 export const GET = async () => {

@@ -13,50 +13,11 @@ function UXUIAreas() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Por ahora usamos los datos existentes, luego los cambiaremos
         const res = await fetch('/api/page-data')
         if (!res.ok) throw new Error('Failed to fetch')
 
         const data = await res.json()
-        // Adaptamos los datos existentes para áreas UX/UI
-        const adaptedData = [
-          {
-            image: '/images/home/innovation/brand.svg',
-            title: 'Investigación\nde Usuarios',
-            bg_color: 'bg-purple/20',
-            txt_color: 'text-purple',
-            description: 'Metodologías para entender usuarios y validar necesidades'
-          },
-          {
-            image: '/images/home/innovation/digitalmarketing.svg', 
-            title: 'Wireframes\ny Flujos',
-            bg_color: 'bg-blue/20',
-            txt_color: 'text-blue',
-            description: 'Estructuras y flujos de navegación efectivos'
-          },
-          {
-            image: '/images/home/innovation/uiux.svg',
-            title: 'Prototipos\nInteractivos', 
-            bg_color: 'bg-orange/20',
-            txt_color: 'text-orange',
-            description: 'Prototipos clickeables para validar conceptos'
-          },
-          {
-            image: '/images/home/innovation/analitics.svg',
-            title: 'Diseño\nVisual',
-            bg_color: 'bg-green/20', 
-            txt_color: 'text-green',
-            description: 'Interfaces visuales atractivas y funcionales'
-          },
-          {
-            image: '/images/home/innovation/webdevp.svg',
-            title: 'Pruebas de\nUsabilidad',
-            bg_color: 'bg-pink/20',
-            txt_color: 'text-pink', 
-            description: 'Pruebas para optimizar la experiencia de usuario'
-          }
-        ];
-        setUxuiAreas(adaptedData)
+        setUxuiAreas(data?.innovationList || [])
       } catch (error) {
         console.error('Error fetching areas:', error)
       }
@@ -116,9 +77,6 @@ function UXUIAreas() {
                             </React.Fragment>
                           ))}
                         </h5>
-                        <p className='text-sm text-dark_black/70 dark:text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-                          {area.description}
-                        </p>
                       </div>
                     </div>
                   )

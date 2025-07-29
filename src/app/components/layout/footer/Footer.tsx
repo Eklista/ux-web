@@ -1,3 +1,4 @@
+// src/app/components/layout/footer/Footer.tsx
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -5,28 +6,32 @@ import Logo from '../header/Logo'
 
 const Footer = () => {
   const [footerData, setfooterData] = useState<any>(null);
-  useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const res = await fetch('/api/footer-data')
-          if (!res.ok) throw new Error('Failed to fetch')
-          const data = await res.json()        
-          setfooterData(data?.footerData)
-        } catch (error) {
-          console.error('Error fetching services:', error)
-        }
-      }
   
-      fetchData()
-    }, [])
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch('/api/footer-data')
+        if (!res.ok) throw new Error('Failed to fetch')
+        const data = await res.json()        
+        setfooterData(data?.footerData)
+      } catch (error) {
+        console.error('Error fetching footer data:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
 
   return (
     <footer className='xl:pt-20 pb-6'>
       <div className='container'>
         <div className='flex flex-col xl:flex-row py-16 gap-10 justify-between border-b border-dark_black/10 dark:border-white/10'>
-          <div className='flex flex-col gap-6 max-w-md'>
+          {/* Brand Section */}
+          <div className='flex flex-col gap-6 max-w-md xl:max-w-lg'>
             <Logo />
-            <p className='opacity-60'>{footerData?.brand?.tagline}</p>
+            <p className='opacity-60 text-sm leading-relaxed'>
+              {footerData?.brand?.tagline}
+            </p>
             <div className='flex gap-4'>
               {footerData?.brand?.socialLinks.map((item:any, index:any) => {
                 return (
@@ -34,9 +39,8 @@ const Footer = () => {
                     key={index}
                     href={item.link}
                     target='_blank'
-                    className='hover:opacity-60'>
+                    className='hover:opacity-60 transition-opacity duration-200'>
                     <Image
-                      key={index}
                       src={item.icon}
                       className='dark:hidden'
                       alt='social-icon'
@@ -55,57 +59,104 @@ const Footer = () => {
               })}
             </div>
           </div>
-          <div className='grid sm:grid-cols-3 gap-6'>
+
+          {/* Links Grid */}
+          <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-8 xl:gap-12'>
+            {/* Explorar */}
             <div className='flex flex-col gap-4'>
-              <p className='font-medium'>{footerData?.sitemap?.name}</p>
+              <p className='font-medium text-lg'>{footerData?.explore?.name}</p>
               <ul className='flex flex-col gap-3'>
-                {footerData?.sitemap?.links.map((item:any, index:any) => {
+                {footerData?.explore?.links.map((item:any, index:any) => {
                   return (
-                    <li
-                      key={index}
-                      className='text-dark_black/60 hover:text-black dark:text-white/60 dark:hover:text-white'>
-                      <Link href={item.url}>{item.name}</Link>
+                    <li key={index}>
+                      <Link 
+                        href={item.url}
+                        className='text-dark_black/60 hover:text-dark_black dark:text-white/60 dark:hover:text-white transition-colors duration-200 text-sm'>
+                        {item.name}
+                      </Link>
                     </li>
                   )
                 })}
               </ul>
             </div>
+
+            {/* Aprender */}
             <div className='flex flex-col gap-4'>
-              <p className='font-medium'>{footerData?.otherPages?.name}</p>
+              <p className='font-medium text-lg'>{footerData?.learn?.name}</p>
               <ul className='flex flex-col gap-3'>
-                {footerData?.otherPages?.links.map((item:any, index:any) => {
+                {footerData?.learn?.links.map((item:any, index:any) => {
                   return (
-                    <li
-                      key={index}
-                      className='text-dark_black/60 hover:text-black dark:text-white/60 dark:hover:text-white'>
-                      <Link href={item.url}>{item.name}</Link>
+                    <li key={index}>
+                      <Link 
+                        href={item.url}
+                        className='text-dark_black/60 hover:text-dark_black dark:text-white/60 dark:hover:text-white transition-colors duration-200 text-sm'>
+                        {item.name}
+                      </Link>
                     </li>
                   )
                 })}
               </ul>
             </div>
+
+            {/* Legal */}
             <div className='flex flex-col gap-4'>
-              <p className='font-medium'>{footerData?.contactDetails?.name}</p>
-              <p className='text-dark_black/60 dark:text-white/60'>
-                {footerData?.contactDetails?.address}
+              <p className='font-medium text-lg'>{footerData?.legal?.name}</p>
+              <ul className='flex flex-col gap-3'>
+                {footerData?.legal?.links.map((item:any, index:any) => {
+                  return (
+                    <li key={index}>
+                      <Link 
+                        href={item.url}
+                        className='text-dark_black/60 hover:text-dark_black dark:text-white/60 dark:hover:text-white transition-colors duration-200 text-sm'>
+                        {item.name}
+                      </Link>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+
+            {/* About Project */}
+            <div className='flex flex-col gap-4'>
+              <p className='font-medium text-lg'>{footerData?.about?.name}</p>
+              <p className='text-dark_black/60 dark:text-white/60 text-sm leading-relaxed'>
+                {footerData?.about?.description}
               </p>
-              <p className='text-dark_black/60 hover:text-black dark:text-white/60 dark:hover:text-white'>
-                <Link href={`mailto:${footerData?.contactDetails?.email}`}>
-                  {footerData?.contactDetails?.email}
-                </Link>
-              </p>
-              <p className='text-dark_black/60 hover:text-black dark:text-white/60 dark:hover:text-white'>
-                <Link href={`tel:${footerData?.contactDetails?.phone}`}>
-                  {footerData?.contactDetails?.phone}
-                </Link>
-              </p>
+              <ul className='flex flex-col gap-1'>
+                {footerData?.about?.details?.map((detail:any, index:any) => {
+                  return (
+                    <li key={index} className='text-dark_black/50 dark:text-white/50 text-xs'>
+                      {detail}
+                    </li>
+                  )
+                })}
+              </ul>
             </div>
           </div>
         </div>
-        <div className='flex justify-center mt-8'>
-          <p className='text-dark_black/60 dark:text-white/60'>
+
+        {/* Copyright Section */}
+        <div className='flex flex-col md:flex-row justify-between items-center mt-8 gap-4'>
+          <p className='text-dark_black/60 dark:text-white/60 text-sm text-center md:text-left'>
             {footerData?.copyright}
           </p>
+          <div className='flex gap-6'>
+            <Link 
+              href="/terms-and-conditions" 
+              className='text-dark_black/50 hover:text-dark_black dark:text-white/50 dark:hover:text-white text-xs transition-colors duration-200'>
+              Términos
+            </Link>
+            <Link 
+              href="/privacy-policy" 
+              className='text-dark_black/50 hover:text-dark_black dark:text-white/50 dark:hover:text-white text-xs transition-colors duration-200'>
+              Privacidad
+            </Link>
+            <Link 
+              href="/documentation" 
+              className='text-dark_black/50 hover:text-dark_black dark:text-white/50 dark:hover:text-white text-xs transition-colors duration-200'>
+              Documentación
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

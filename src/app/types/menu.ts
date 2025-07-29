@@ -33,8 +33,13 @@ export type creativeMind = {
   image: string;
   name: string;
   position: string;
+  company?: string;
+  bio?: string;
   twitterLink: string;
   linkedinLink: string;
+  portfolioUrl?: string;
+  contributions?: Array<string>;
+  keyWork?: string;
 }
 
 export type WebResultTag = {
