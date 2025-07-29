@@ -1,3 +1,4 @@
+// src/app/components/home/hero/index.tsx
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -7,7 +8,7 @@ import StarRating from '../../shared/star-rating'
 
 function HeroSection() {
   const ref = useRef(null)
-   const [avatarList, setAvatarList] = useState<any>(null);
+  const [avatarList, setAvatarList] = useState<any>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,21 +36,19 @@ function HeroSection() {
       <div className='relative w-full pt-44 2xl:pb-20 pb-10 before:absolute before:w-full before:h-full before:bg-linear-to-r before:from-blue_gradient before:via-white before:to-yellow_gradient before:rounded-full before:top-24 before:blur-3xl before:-z-10 dark:before:from-dark_blue_gradient dark:before:via-black dark:before:to-dark_yellow_gradient dark:before:rounded-full dark:before:blur-3xl dark:before:-z-10'>
         <div className='container relative z-10'>
           <div ref={ref} className='flex flex-col gap-8'>
-            {/* ---------------- heading text --------------- */}
             <motion.div
               {...bottomAnimation}
               className='relative flex flex-col text-center items-center gap-4'>
               <h1 className='font-medium w-full'>
-                Building bold brands with
+                Aprende<br></br>
                 <span className='instrument-font italic font-normal dark:text-white/70'>
-                  {' '}
-                  thoughtful design
+                  {' '}UX/UI Design
                 </span>
               </h1>
               <p className='max-w-38 text-dark_black/60 dark:text-white/60'>
-                At Awake, we help small startups tackle the world’s biggest
-                challenges with tailored solutions, guiding you from strategy to
-                success in a competitive market.
+                Un sitio web educativo dedicado al diseño de experiencia e interfaz de usuario. 
+                Explora casos de estudio reales, descubre herramientas profesionales y accede a 
+                recursos curados para estudiantes y profesionales del diseño digital.
               </p>
             </motion.div>
 
@@ -57,12 +56,11 @@ function HeroSection() {
               {...bottomAnimation}
               className='flex flex-col items-center justify-center gap-4'>
               <div className='flex flex-col items-center justify-center gap-8 w-full sm:flex-row'>
-                {/* ----------- Get started Link -------------- */}
                 <Link
-                  href='/contact'
+                  href='/#casos-estudio'
                   className='group bg-purple_blue text-white font-medium flex flex-row justify-between items-center py-2 px-5 rounded-full max-w-64 w-full md:py-3 border border-purple_blue transition-all duration-200 ease-in-out hover:bg-transparent hover:text-purple_blue'>
                   <span className='flex text-start transform transition-transform duration-200 ease-in-out group-hover:translate-x-28'>
-                    Get Started
+                    Explorar Recursos
                   </span>
                   <svg
                     width='40'
@@ -94,7 +92,6 @@ function HeroSection() {
                   </svg>
                 </Link>
 
-                {/* --------------- avatar division -------------- */}
                 <div className='flex items-center gap-7'>
                   <ul className='avatar flex flex-row items-center'>
                     {avatarList?.avatarList?.map((items:any, index:any) => (
@@ -111,13 +108,12 @@ function HeroSection() {
                       </li>
                     ))}
                   </ul>
-                  {/* -------------- Star rating division --------------- */}
                   <div className='gap-1 flex flex-col'>
                     <div>
-                      <StarRating count={4} color='#F59E0B' />
+                      <StarRating count={5} color='#F59E0B' />
                     </div>
                     <p className='text-sm font-normal text-dark_black/60 dark:text-white/60'>
-                      Trusted by 1000+ clients
+                      Proyecto académico Universidad Galileo
                     </p>
                   </div>
                 </div>

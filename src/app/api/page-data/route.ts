@@ -1,3 +1,4 @@
+// src/app/api/page-data/route.ts
 import { NextResponse } from 'next/server'
 import {
   avatar,
@@ -152,19 +153,19 @@ const creativeMindList: creativeMind[] = [
 const WebResultTagList: WebResultTag[] = [
   {
     image: '/images/home/result/creativity.svg',
-    name: 'Creativity',
+    name: 'Creatividad',
     bg_color: 'bg-purple/20',
     txt_color: 'text-purple',
   },
   {
     image: '/images/home/result/innovation.svg',
-    name: 'Innovation',
+    name: 'Innovación',
     bg_color: 'bg-blue/20',
     txt_color: 'text-blue',
   },
   {
     image: '/images/home/result/strategy.svg',
-    name: 'Strategy',
+    name: 'Estrategia',
     bg_color: 'bg-orange/20',
     txt_color: 'text-orange',
   },
@@ -211,34 +212,28 @@ const startupPlanList: startupPlan[] = [
 
 const faqList: faq[] = [
   {
-    faq_que: 'What services does Awake Agency offer?',
-    faq_ans:
-      'Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages for clients needing regular updates or technical assistance.',
+    faq_que: '¿Cuál es la diferencia entre UX y UI?',
+    faq_ans: 'UX (User Experience) se enfoca en la experiencia completa del usuario, incluyendo investigación, arquitectura de información y flujos. UI (User Interface) se centra en el diseño visual de la interfaz: colores, tipografías, botones y elementos gráficos. Ambas disciplinas trabajan juntas para crear productos digitales efectivos.',
   },
   {
-    faq_que: 'How long does a typical project take?',
-    faq_ans:
-      'Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages for clients needing regular updates or technical assistance.',
+    faq_que: '¿Qué herramientas son esenciales para empezar en UX/UI?',
+    faq_ans: 'Para comenzar necesitas: Figma o Sketch para diseño de interfaces, Miro o Mural para mapas mentales y flujos, Maze o UsabilityHub para testing, y herramientas de prototipado como InVision o Principle. Muchas de estas tienen versiones gratuitas perfectas para estudiantes.',
   },
   {
-    faq_que: 'How is pricing structured at Awake Agency?',
-    faq_ans:
-      'Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages for clients needing regular updates or technical assistance.',
+    faq_que: '¿Cómo se aplica Design Thinking en proyectos reales?',
+    faq_ans: 'Design Thinking sigue 5 fases: Empatizar (investigar usuarios), Definir (identificar problemas), Idear (generar soluciones), Prototipar (crear versiones de prueba) e Iterar (mejorar basado en feedback). Se aplica desde apps móviles hasta servicios físicos, siempre poniendo al usuario en el centro.',
   },
   {
-    faq_que: 'Do you offer ongoing support after project completion?',
-    faq_ans:
-      'Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages for clients needing regular updates or technical assistance.',
+    faq_que: '¿Qué es la investigación de usuarios y por qué es importante?',
+    faq_ans: 'La investigación de usuarios incluye entrevistas, encuestas, análisis de comportamiento y testing de usabilidad para entender necesidades, motivaciones y frustraciones. Es fundamental porque evita suposiciones incorrectas y asegura que el diseño resuelva problemas reales de usuarios reales.',
   },
   {
-    faq_que: 'How often will I receive updates on my project?',
-    faq_ans:
-      'Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages for clients needing regular updates or technical assistance.',
+    faq_que: '¿Cómo se hace un prototipo efectivo?',
+    faq_ans: 'Un prototipo efectivo debe tener el nivel de fidelidad apropiado para el objetivo: wireframes para estructura, mockups para diseño visual, y prototipos interactivos para flujos. Debe ser rápido de crear, fácil de modificar y permitir testing temprano con usuarios reales.',
   },
   {
-    faq_que: 'How often will I receive updates on my project?',
-    faq_ans:
-      'Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages for clients needing regular updates or technical assistance.',
+    faq_que: '¿Qué son las heurísticas de usabilidad de Nielsen?',
+    faq_ans: 'Son 10 principios fundamentales para evaluar interfaces: visibilidad del estado del sistema, correspondencia entre sistema y mundo real, control del usuario, consistencia, prevención de errores, reconocimiento vs recordación, flexibilidad, diseño minimalista, ayuda a recuperarse de errores, y documentación accesible.',
   },
 ]
 
@@ -270,7 +265,6 @@ const achievementsList: achievements[] = [
     url: 'https://www.framer.com/@wrap-pixel/',
   },
 ]
-
 
 export const GET = async () => {
   return NextResponse.json({

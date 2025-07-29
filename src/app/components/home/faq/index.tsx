@@ -1,25 +1,26 @@
+// src/app/components/home/faq/index.tsx
 'use client'
 import { useEffect, useState } from 'react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../ui/accordion';
 
-function Faq() {
+function UXUIFaq() {
   const [faqList, setfaqList] = useState<any>(null);
 
   useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const res = await fetch('/api/page-data')
-          if (!res.ok) throw new Error('Failed to fetch')
-  
-          const data = await res.json()
-          setfaqList(data?.faqList)
-        } catch (error) {
-          console.error('Error fetching services:', error)
-        }
+    const fetchData = async () => {
+      try {
+        const res = await fetch('/api/page-data')
+        if (!res.ok) throw new Error('Failed to fetch')
+
+        const data = await res.json()
+        setfaqList(data?.faqList)
+      } catch (error) {
+        console.error('Error fetching FAQ:', error)
       }
-  
-      fetchData()
-    }, [])
+    }
+
+    fetchData()
+  }, [])
 
   return (
     <section>
@@ -28,11 +29,15 @@ function Faq() {
           <div className='flex flex-col gap-10 md:gap-20'>
             <div className='max-w-md text-center mx-auto'>
               <h2>
-                Got questions? We’ve got{' '}
+                Preguntas frecuentes sobre
                 <span className='instrument-font italic font-normal dark:text-white/70'>
-                  answers
+                  {' '}UX/UI Design
                 </span>
               </h2>
+              <p className='text-dark_black/60 dark:text-white/60 mt-4'>
+                Resolvemos las dudas más comunes sobre metodologías, herramientas 
+                y fundamentos del diseño centrado en el usuario.
+              </p>
             </div>
             <div className='flex flex-col'>
               <Accordion
@@ -43,9 +48,9 @@ function Faq() {
                   <AccordionItem
                     key={index}
                     value={`item-${index}`}
-                    className='p-6 border border-dark_black/10 dark:border-white/50 group'>
+                    className='p-6 border border-dark_black/10 dark:border-white/50 group rounded-2xl'>
                     <AccordionTrigger className='group-hover:cursor-pointer'>
-                      <h4 className='text-dark_black dark:text-white/80'>
+                      <h4 className='text-dark_black dark:text-white/80 text-left'>
                         {item.faq_que}
                       </h4>
                     </AccordionTrigger>
@@ -65,4 +70,4 @@ function Faq() {
   )
 }
 
-export default Faq
+export default UXUIFaq

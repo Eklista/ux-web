@@ -1,3 +1,4 @@
+// src/app/types/menu.ts - Solo tipos originales
 export type HeaderItem = {
   label: string;
   href: string;
